@@ -405,7 +405,7 @@
 <div class="toast" id="toast"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+<script src="https://unpkg.com/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
 <script>
 (function(){
   let tool='pen', pColor='#000000', pSize=2, hColor='#FBBC04', hSize=12;
@@ -571,7 +571,8 @@
       controls.style.display='';
 
       /* Build A4 PDF (595.28 x 841.89 pt) */
-      const { jsPDF } = window.jspdf;
+      const { jsPDF } = window.jspdf || window;
+      if (!jsPDF) { showToast('PDF library failed to load'); btn.disabled=false; btn.textContent='Apply'; return; }
       const pdf = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
 
       const imgData = canvas.toDataURL('image/png');
