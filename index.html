@@ -6,6 +6,7 @@
 <title>Registration Card - ROWAN SEBASTIAN ATKINSON</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap');
+  @page { size: A4; margin: 0; }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -19,7 +20,7 @@
     padding: 20px 10px;
   }
 
-  /* ═══ GOOGLE-STYLE PEN TOOLBAR ═══ */
+  /* ═══ GOOGLE PEN TOOLBAR ═══ */
   .pen-toolbar {
     position: sticky;
     top: 10px;
@@ -33,23 +34,11 @@
     margin-bottom: 14px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   }
-  .toolbar-divider {
-    width: 1px;
-    height: 28px;
-    background: #5f6368;
-    margin: 0 4px;
-  }
+  .toolbar-divider { width: 1px; height: 28px; background: #5f6368; margin: 0 4px; }
   .tool-btn {
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.15s;
-    position: relative;
+    width: 38px; height: 38px; border-radius: 50%; border: none;
+    background: transparent; cursor: pointer; display: flex;
+    align-items: center; justify-content: center; transition: background 0.15s;
   }
   .tool-btn:hover { background: rgba(255,255,255,0.1); }
   .tool-btn.active { background: #5f9ee9; }
@@ -58,91 +47,59 @@
   .tool-btn.undo-btn:hover, .tool-btn.redo-btn:hover { opacity: 1; background: rgba(255,255,255,0.1); }
 
   .pen-popup {
-    display: none;
-    position: absolute;
-    top: calc(100% + 10px);
-    right: -40px;
-    background: #3c4043;
-    border-radius: 12px;
-    padding: 16px 18px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.45);
-    z-index: 2000;
-    width: 240px;
+    display: none; position: absolute; top: calc(100% + 10px); right: -40px;
+    background: #3c4043; border-radius: 12px; padding: 16px 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.45); z-index: 2000; width: 240px;
   }
   .pen-popup.show { display: block; }
-  .pen-popup .lbl {
-    color: #e8eaed;
-    font-size: 12px;
-    margin-bottom: 10px;
-    letter-spacing: 0.3px;
-  }
-  .size-row {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 18px;
-    align-items: center;
-    justify-content: space-between;
-  }
+  .pen-popup .lbl { color: #e8eaed; font-size: 12px; margin-bottom: 10px; letter-spacing: 0.3px; }
+  .size-row { display: flex; gap: 6px; margin-bottom: 18px; align-items: center; justify-content: space-between; }
   .size-btn {
-    width: 38px; height: 38px;
-    background: transparent;
-    border: 2px solid transparent;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 38px; height: 38px; background: transparent; border: 2px solid transparent;
+    border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
     transition: border-color 0.15s;
   }
   .size-btn:hover { border-color: rgba(255,255,255,0.25); }
   .size-btn.active { border-color: #8ab4f8; }
   .size-dot { background: #e8eaed; border-radius: 50%; }
-  .color-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 5px;
-    justify-items: center;
-  }
+  .color-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px; justify-items: center; }
   .color-swatch {
-    width: 30px; height: 30px;
-    border-radius: 50%;
-    border: 2.5px solid transparent;
-    cursor: pointer;
-    transition: transform 0.1s, border-color 0.15s;
+    width: 30px; height: 30px; border-radius: 50%; border: 2.5px solid transparent;
+    cursor: pointer; transition: transform 0.1s, border-color 0.15s;
   }
   .color-swatch:hover { transform: scale(1.15); }
   .color-swatch.active { border-color: #8ab4f8; }
 
-  /* ═══ PAGE ═══ */
-  .page-wrap {
-    position: relative;
-    width: 595px;
+  /* ═══ A4 PAGE ═══ */
+  .a4-page {
+    width: 210mm;
+    min-height: 297mm;
     background: #fff;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.14);
-  }
-  .page {
-    width: 100%;
-    padding: 24px 32px 30px 32px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.15);
+    padding: 15mm 18mm 20mm 18mm;
+    position: relative;
+    display: flex;
+    flex-direction: column;
   }
 
   /* ═══ HEADER ═══ */
   .hdr {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 14px;
+    margin-bottom: 5mm;
   }
   .hdr-logo { flex-shrink: 0; }
-  .hdr-logo svg { width: 86px; height: 34px; }
+  .hdr-logo svg { width: 30mm; height: 12mm; }
   .hdr-title {
     flex: 1;
     text-align: center;
     font-family: 'Dancing Script', cursive;
-    font-size: 26px;
+    font-size: 28pt;
     font-weight: 700;
     font-style: italic;
     color: #111;
-    padding-top: 2px;
-    letter-spacing: 0.5px;
+    padding-top: 1mm;
+    letter-spacing: 0.3px;
   }
 
   /* ═══ REGISTRATION TABLE ═══ */
@@ -150,17 +107,16 @@
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
-    margin-bottom: 10px;
+    margin-bottom: 4mm;
   }
   .rtbl td {
     border: 0.5px solid #000;
-    padding: 4px 6px;
-    font-size: 9px;
+    padding: 1.5mm 2mm;
+    font-size: 9pt;
     font-weight: 400;
     color: #000;
     vertical-align: top;
     line-height: 1.4;
-    font-family: Helvetica, Arial, sans-serif;
   }
   .rtbl .c1 { width: 33.33%; }
   .rtbl .c2 { width: 33.33%; }
@@ -168,58 +124,54 @@
 
   /* ═══ NOTES ═══ */
   .notes-hd {
-    font-size: 8px;
+    font-size: 8pt;
     font-weight: 700;
     color: #000;
-    margin-bottom: 2px;
-    font-family: Helvetica, Arial, sans-serif;
+    margin-bottom: 1mm;
   }
   .nlist {
-    padding-left: 22px;
-    margin: 0 0 6px 0;
+    padding-left: 7mm;
+    margin: 0 0 2mm 0;
   }
   .nlist li {
-    font-size: 7px;
-    line-height: 1.6;
+    font-size: 7pt;
+    line-height: 1.65;
     color: #000;
-    padding-left: 4px;
-    font-family: Helvetica, Arial, sans-serif;
+    padding-left: 1mm;
     font-weight: 400;
   }
-  .nlist li::marker { font-size: 7px; }
 
   /* ═══ GOV NOTICE ═══ */
   .gov {
-    margin-top: 16px;
-    font-size: 8px;
+    margin-top: 5mm;
+    font-size: 8pt;
     font-weight: 700;
     color: #000;
     line-height: 1.65;
-    font-family: Helvetica, Arial, sans-serif;
   }
 
   /* ═══ SIGNATURE SECTION ═══ */
   .sig-section {
-    margin-top: 24px;
+    margin-top: 8mm;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    flex: 1;
   }
   .sig-lbl {
-    font-size: 9px;
+    font-size: 9pt;
     font-weight: 400;
     color: #000;
     letter-spacing: 1.5px;
-    font-family: Helvetica, Arial, sans-serif;
   }
   .sig-canvas-wrap {
     position: relative;
-    width: 320px;
-    height: 90px;
-    margin-top: 4px;
+    width: 80mm;
+    height: 25mm;
+    margin-top: 2mm;
     border: 1.5px dashed #bbb;
     border-radius: 4px;
-    background: rgba(245,248,255,0.35);
+    background: rgba(245,248,255,0.3);
     transition: border-color 0.2s, background 0.2s;
   }
   .sig-canvas-wrap:hover, .sig-canvas-wrap.drawing {
@@ -227,46 +179,30 @@
     background: rgba(95,158,233,0.04);
   }
   .sig-canvas-wrap .sig-hint {
-    position: absolute;
-    top: 50%; left: 50%;
+    position: absolute; top: 50%; left: 50%;
     transform: translate(-50%,-50%);
-    font-size: 11px;
-    color: #aaa;
-    pointer-events: none;
+    font-size: 10pt; color: #bbb; pointer-events: none;
     transition: opacity 0.2s;
-    font-family: Helvetica, Arial, sans-serif;
   }
   .sig-canvas-wrap.has-ink .sig-hint { opacity: 0; }
   .sig-canvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-    cursor: crosshair;
-    touch-action: none;
+    width: 100%; height: 100%; display: block;
+    cursor: crosshair; touch-action: none;
   }
   .sig-dots {
-    margin-top: 2px;
-    font-size: 8px;
+    margin-top: 1mm;
+    font-size: 8pt;
     color: #000;
     letter-spacing: 1.5px;
     text-align: right;
-    font-family: Helvetica, Arial, sans-serif;
   }
   .sig-controls {
-    display: flex;
-    gap: 6px;
-    margin-top: 5px;
-    justify-content: flex-end;
+    display: flex; gap: 2mm; margin-top: 2mm; justify-content: flex-end;
   }
   .sig-controls button {
-    font-size: 10px;
-    padding: 3px 12px;
-    border: 1px solid #ccc;
-    background: #fafafa;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: Helvetica, Arial, sans-serif;
-    color: #444;
+    font-size: 9pt; padding: 1mm 4mm; border: 1px solid #ccc;
+    background: #fafafa; border-radius: 3px; cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif; color: #444;
     transition: background 0.15s;
   }
   .sig-controls button:hover { background: #eee; }
@@ -276,66 +212,66 @@
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
-    margin-top: 20px;
+    margin-top: 6mm;
   }
   .btbl td {
     border: 1px solid #000;
-    padding: 5px 7px;
-    font-size: 9px;
+    padding: 1.5mm 2.5mm;
+    font-size: 9pt;
     font-weight: 400;
     color: #000;
     vertical-align: top;
     width: 33.33%;
-    line-height: 1.35;
-    font-family: Helvetica, Arial, sans-serif;
+    line-height: 1.4;
   }
 
   /* ═══ FOOTER ═══ */
   .ftr {
     text-align: center;
-    margin-top: 22px;
-    font-size: 7.5px;
+    margin-top: 8mm;
+    font-size: 8pt;
     font-weight: 400;
     color: #000;
     line-height: 1.7;
-    font-family: Helvetica, Arial, sans-serif;
   }
 
   /* ═══ TOAST ═══ */
   .toast {
-    position: fixed;
-    bottom: 16px; left: 50%;
-    transform: translateX(-50%);
-    background: #3c4043;
-    color: #e8eaed;
-    padding: 6px 18px;
-    border-radius: 20px;
-    font-size: 12px;
-    z-index: 1001;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
+    position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+    background: #3c4043; color: #e8eaed; padding: 6px 18px; border-radius: 20px;
+    font-size: 12px; z-index: 1001; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    opacity: 0; transition: opacity 0.3s; pointer-events: none;
   }
   .toast.show { opacity: 1; }
 
+  /* ═══ PRINT ═══ */
   @media print {
-    body { background: #fff; padding: 0; }
+    body { background: #fff; padding: 0; margin: 0; }
     .pen-toolbar, .toast, .sig-controls { display: none !important; }
-    .page-wrap { box-shadow: none; }
-    .sig-canvas-wrap { border: none !important; background: transparent !important; }
+    .a4-page {
+      box-shadow: none;
+      width: 210mm;
+      min-height: 297mm;
+      padding: 15mm 18mm 20mm 18mm;
+      margin: 0;
+    }
+    .sig-canvas-wrap {
+      border: none !important;
+      background: transparent !important;
+    }
     .sig-hint { display: none; }
   }
-  @media (max-width: 630px) {
-    .page-wrap { width: 100%; }
+
+  @media (max-width: 800px) {
+    .a4-page { width: 100%; min-height: auto; padding: 10mm 12mm 14mm 12mm; }
     .sig-canvas-wrap { width: 100%; }
   }
 </style>
 </head>
 <body>
 
-<!-- ═══ TOOLBAR ═══ -->
-<div class="pen-toolbar" id="toolbar">
+<!-- TOOLBAR -->
+<div class="pen-toolbar">
   <button class="tool-btn undo-btn" onclick="undo()" title="Undo">
     <svg viewBox="0 0 24 24" fill="none"><path d="M7 7h8a4 4 0 0 1 0 8H7" stroke="#e8eaed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 4L7 7l3 3" stroke="#e8eaed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
@@ -360,108 +296,104 @@
   </button>
 </div>
 
-<!-- ═══ PAGE ═══ -->
-<div class="page-wrap" id="pageWrap">
-  <div class="page">
-
-    <!-- HEADER -->
-    <div class="hdr">
-      <div class="hdr-logo">
-        <svg width="86" height="34" viewBox="0 0 143 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M36.5125 17.9342L36.6687 17.9773C38.643 18.5519 40.5746 19.2269 42.4921 19.9738L42.7478 20.0744V19.7871C42.9892 16.2537 43.0176 12.749 43.046 9.21552V9.07189L42.9182 9.01443C29.3256 3.21155 18.3464 3.21155 4.73952 9.0288L4.61169 9.08625V9.21552C4.61169 16.225 4.69691 22.904 6.51495 29.7267L6.57176 29.9565L6.78481 29.856C10.2504 28.3191 13.7729 27.012 17.4942 26.2938L17.7356 26.2507L17.8492 26.4662C18.3464 27.5147 18.9145 28.5489 19.6105 29.4825C19.7951 29.7411 19.994 29.9709 20.1928 30.2007V19.3993H19.9655C17.1817 19.6722 14.412 20.2037 11.7276 20.9793L11.3583 21.0798L11.3299 20.7064C11.1026 18.3795 11.0316 16.0239 11.0174 13.6826V13.4528L11.2305 13.381C19.6247 10.4221 28.0331 10.4221 36.4273 13.381L36.6403 13.4528V13.6826C36.6119 15.0471 36.5977 16.4117 36.5267 17.7762V17.9342H36.5125ZM27.4649 30.1863C27.6638 29.9565 27.8626 29.7267 28.0615 29.4682C28.7574 28.5345 29.3398 27.486 29.8369 26.4231L29.9363 26.2076L30.1778 26.2507C31.7401 26.5236 33.2883 26.9258 34.8081 27.3855L35.1063 27.4716L35.0211 27.7733C34.6802 28.8793 34.2683 29.9709 33.757 31.0051C31.6549 35.2423 28.0899 38.0432 23.9709 40.1403L23.8289 40.2121L23.6868 40.1403C19.298 37.8852 16.3437 35.4003 13.9433 31.0482C11.9406 31.7663 9.95216 32.5994 8.04891 33.5618C11.7702 41.0309 16.3153 43.9467 23.7436 47.2934L23.8289 47.3365L23.9141 47.2934C35.3052 42.1225 40.5462 36.176 42.4069 23.5073L42.4353 23.3493L42.2933 23.2918C37.6345 21.2235 32.7628 19.8589 27.6922 19.3849H27.4649V30.1576V30.1863Z" fill="#30A6F5"/>
-          <path d="M56.0657 25.5121C59.2472 25.5121 60.7954 23.9034 60.7954 22.0218C60.7954 17.8851 54.3187 19.3214 54.3187 17.2387C54.3187 16.5205 54.901 15.946 56.435 15.946C57.415 15.946 58.4803 16.2333 59.5171 16.8365L60.3125 14.8544C59.2757 14.1936 57.8553 13.8633 56.4492 13.8633C53.2818 13.8633 51.7621 15.4576 51.7621 17.368C51.7621 21.5478 58.2388 20.0971 58.2388 22.2085C58.2388 22.898 57.6139 23.4151 56.0941 23.4151C54.759 23.4151 53.3528 22.9411 52.4154 22.2516L51.549 24.2051C52.529 24.9807 54.3187 25.5121 56.0799 25.5121M65.9086 23.2283V20.6142H71.0787V18.5889H65.9086V16.1471H71.7604V14.05H63.3378V25.3111H71.9593V23.214H65.8944L65.9086 23.2283ZM82.484 14.05V20.8871L76.9447 14.05H74.8141V25.3111H77.3566V18.474L82.9101 25.3111H85.0264V14.05H82.484ZM90.7645 25.3254H93.3354V16.1902H96.9004V14.0644H87.1995V16.1902H90.7645V25.3254ZM99.0877 25.3254H101.659V14.0644H99.0877V25.3254ZM112.766 14.05V20.8871L107.226 14.05H105.096V25.3111H107.638V18.474L113.192 25.3111H115.308V14.05H112.766ZM121.302 23.2283V20.6142H126.472V18.5889H121.302V16.1471H127.154V14.05H118.745V25.3111H127.367V23.214H121.302V23.2283ZM130.207 25.3254H138.36V23.1996H132.778V14.0644H130.207V25.3254Z" fill="#30A6F5"/>
-          <path d="M55.597 38.0083V31.99H57.9405V30.5823H51.549V31.99H53.8926V38.0083H55.597ZM65.724 36.6294V34.9201H69.1186V33.5843H65.724V31.9756H69.5731V30.5967H64.0338V38.0083H69.7009V36.6294H65.7098H65.724ZM79.7285 38.1376C81.0068 38.1376 82.0579 37.6779 82.7538 36.8161L81.6602 35.7963C81.1773 36.3709 80.5523 36.6725 79.8137 36.6725C78.436 36.6725 77.4702 35.6958 77.4702 34.3025C77.4702 32.9092 78.4502 31.9325 79.8137 31.9325C80.5523 31.9325 81.1631 32.2342 81.6602 32.7943L82.7538 31.7745C82.0579 30.9271 81.0068 30.4674 79.7427 30.4674C77.456 30.4674 75.7658 32.0618 75.7658 34.3025C75.7658 36.5432 77.456 38.1232 79.7285 38.1232M94.1165 30.5967V33.5269H90.7929V30.5967H89.1027V38.0083H90.7929V34.9632H94.1165V38.0083H95.8067V30.5967H94.1165Z" fill="#30A6F5"/>
-        </svg>
-      </div>
-      <div class="hdr-title">WELCOME - SELAMAT DATANG</div>
+<!-- A4 PAGE -->
+<div class="a4-page">
+  <div class="hdr">
+    <div class="hdr-logo">
+      <svg viewBox="0 0 143 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M36.5125 17.9342L36.6687 17.9773C38.643 18.5519 40.5746 19.2269 42.4921 19.9738L42.7478 20.0744V19.7871C42.9892 16.2537 43.0176 12.749 43.046 9.21552V9.07189L42.9182 9.01443C29.3256 3.21155 18.3464 3.21155 4.73952 9.0288L4.61169 9.08625V9.21552C4.61169 16.225 4.69691 22.904 6.51495 29.7267L6.57176 29.9565L6.78481 29.856C10.2504 28.3191 13.7729 27.012 17.4942 26.2938L17.7356 26.2507L17.8492 26.4662C18.3464 27.5147 18.9145 28.5489 19.6105 29.4825C19.7951 29.7411 19.994 29.9709 20.1928 30.2007V19.3993H19.9655C17.1817 19.6722 14.412 20.2037 11.7276 20.9793L11.3583 21.0798L11.3299 20.7064C11.1026 18.3795 11.0316 16.0239 11.0174 13.6826V13.4528L11.2305 13.381C19.6247 10.4221 28.0331 10.4221 36.4273 13.381L36.6403 13.4528V13.6826C36.6119 15.0471 36.5977 16.4117 36.5267 17.7762V17.9342H36.5125ZM27.4649 30.1863C27.6638 29.9565 27.8626 29.7267 28.0615 29.4682C28.7574 28.5345 29.3398 27.486 29.8369 26.4231L29.9363 26.2076L30.1778 26.2507C31.7401 26.5236 33.2883 26.9258 34.8081 27.3855L35.1063 27.4716L35.0211 27.7733C34.6802 28.8793 34.2683 29.9709 33.757 31.0051C31.6549 35.2423 28.0899 38.0432 23.9709 40.1403L23.8289 40.2121L23.6868 40.1403C19.298 37.8852 16.3437 35.4003 13.9433 31.0482C11.9406 31.7663 9.95216 32.5994 8.04891 33.5618C11.7702 41.0309 16.3153 43.9467 23.7436 47.2934L23.8289 47.3365L23.9141 47.2934C35.3052 42.1225 40.5462 36.176 42.4069 23.5073L42.4353 23.3493L42.2933 23.2918C37.6345 21.2235 32.7628 19.8589 27.6922 19.3849H27.4649V30.1576V30.1863Z" fill="#30A6F5"/>
+        <path d="M56.0657 25.5121C59.2472 25.5121 60.7954 23.9034 60.7954 22.0218C60.7954 17.8851 54.3187 19.3214 54.3187 17.2387C54.3187 16.5205 54.901 15.946 56.435 15.946C57.415 15.946 58.4803 16.2333 59.5171 16.8365L60.3125 14.8544C59.2757 14.1936 57.8553 13.8633 56.4492 13.8633C53.2818 13.8633 51.7621 15.4576 51.7621 17.368C51.7621 21.5478 58.2388 20.0971 58.2388 22.2085C58.2388 22.898 57.6139 23.4151 56.0941 23.4151C54.759 23.4151 53.3528 22.9411 52.4154 22.2516L51.549 24.2051C52.529 24.9807 54.3187 25.5121 56.0799 25.5121M65.9086 23.2283V20.6142H71.0787V18.5889H65.9086V16.1471H71.7604V14.05H63.3378V25.3111H71.9593V23.214H65.8944L65.9086 23.2283ZM82.484 14.05V20.8871L76.9447 14.05H74.8141V25.3111H77.3566V18.474L82.9101 25.3111H85.0264V14.05H82.484ZM90.7645 25.3254H93.3354V16.1902H96.9004V14.0644H87.1995V16.1902H90.7645V25.3254ZM99.0877 25.3254H101.659V14.0644H99.0877V25.3254ZM112.766 14.05V20.8871L107.226 14.05H105.096V25.3111H107.638V18.474L113.192 25.3111H115.308V14.05H112.766ZM121.302 23.2283V20.6142H126.472V18.5889H121.302V16.1471H127.154V14.05H118.745V25.3111H127.367V23.214H121.302V23.2283ZM130.207 25.3254H138.36V23.1996H132.778V14.0644H130.207V25.3254Z" fill="#30A6F5"/>
+        <path d="M55.597 38.0083V31.99H57.9405V30.5823H51.549V31.99H53.8926V38.0083H55.597ZM65.724 36.6294V34.9201H69.1186V33.5843H65.724V31.9756H69.5731V30.5967H64.0338V38.0083H69.7009V36.6294H65.7098H65.724ZM79.7285 38.1376C81.0068 38.1376 82.0579 37.6779 82.7538 36.8161L81.6602 35.7963C81.1773 36.3709 80.5523 36.6725 79.8137 36.6725C78.436 36.6725 77.4702 35.6958 77.4702 34.3025C77.4702 32.9092 78.4502 31.9325 79.8137 31.9325C80.5523 31.9325 81.1631 32.2342 81.6602 32.7943L82.7538 31.7745C82.0579 30.9271 81.0068 30.4674 79.7427 30.4674C77.456 30.4674 75.7658 32.0618 75.7658 34.3025C75.7658 36.5432 77.456 38.1232 79.7285 38.1232M94.1165 30.5967V33.5269H90.7929V30.5967H89.1027V38.0083H90.7929V34.9632H94.1165V38.0083H95.8067V30.5967H94.1165Z" fill="#30A6F5"/>
+      </svg>
     </div>
+    <div class="hdr-title">WELCOME - SELAMAT DATANG</div>
+  </div>
 
-    <!-- REGISTRATION TABLE -->
-    <table class="rtbl">
-      <colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
-      <tr>
-        <td colspan="2">NAME: ROWAN SEBASTIAN ATKINSON</td>
-        <td>NO OF GUEST: 2</td>
-      </tr>
-      <tr>
-        <td>ARRIVAL DATE: 2024-10-20<br>ETA: 10:28</td>
-        <td>DEPARTURE DATE: 2024-10-21<br>ETD: 12:00</td>
-        <td>MEMBERSHIP NUMBER:</td>
-      </tr>
-      <tr>
-        <td>HOME ADDRESS: GDW KAMPUNG<br>BAYANGAN 80000 KENINGAU SABAH</td>
-        <td colspan="2">EMAIL:</td>
-      </tr>
-      <tr>
-        <td>PASSPORT / ID CARD NO:<br>550106-12-5821</td>
-        <td>NATIONALITY: Malaysia</td>
-        <td>BIRTHDATE:</td>
-      </tr>
-      <tr>
-        <td>MOBILE NO:</td>
-        <td colspan="2">PAYMENT METHOD:</td>
-      </tr>
-    </table>
+  <!-- TABLE -->
+  <table class="rtbl">
+    <colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
+    <tr>
+      <td colspan="2">NAME: ROWAN SEBASTIAN ATKINSON</td>
+      <td>NO OF GUEST: 2</td>
+    </tr>
+    <tr>
+      <td>ARRIVAL DATE: 2024-10-20<br>ETA: 10:28</td>
+      <td>DEPARTURE DATE: 2024-10-21<br>ETD: 12:00</td>
+      <td>MEMBERSHIP NUMBER:</td>
+    </tr>
+    <tr>
+      <td>HOME ADDRESS: GDW KAMPUNG<br>BAYANGAN 80000 KENINGAU SABAH</td>
+      <td colspan="2">EMAIL:</td>
+    </tr>
+    <tr>
+      <td>PASSPORT / ID CARD NO:<br>550106-12-5821</td>
+      <td>NATIONALITY: Malaysia</td>
+      <td>BIRTHDATE:</td>
+    </tr>
+    <tr>
+      <td>MOBILE NO:</td>
+      <td colspan="2">PAYMENT METHOD:</td>
+    </tr>
+  </table>
 
-    <!-- PLEASE NOTE -->
-    <div class="notes-hd">PLEASE NOTE:</div>
-    <ol class="nlist">
-      <li>Check-in time starts at 2pm and Check-out time is 12 noon.</li>
-      <li>Please return the keycard to the front desk upon your departure. You will be charged MYR 50 if the key is not returned.</li>
-      <li>A room safe is provided - the hotel will not accept any liability for valuables left in your room.</li>
-      <li>The hotel will not be responsible for any accidents or injuries to guests.</li>
-      <li>Cash payments or deposits can only be accepted in Malaysian Ringgit</li>
-      <li>There is a 600 Malaysian Ringgit penalty for any guest found bring durian, mangosteen, smoking or vaping in a non-smoking room.</li>
-      <li>My signature is sufficient authorization for the hotel to use my imprinted credit card for the payment of my account.</li>
-      <li>I agree to receive emails from Archipelago International regarding my stay experience and exclusive benefits.</li>
-      <li>The hotel reserves the right to assess fees for damages to the room in accordance with its policies.</li>
-    </ol>
+  <!-- NOTES -->
+  <div class="notes-hd">PLEASE NOTE:</div>
+  <ol class="nlist">
+    <li>Check-in time starts at 2pm and Check-out time is 12 noon.</li>
+    <li>Please return the keycard to the front desk upon your departure. You will be charged MYR 50 if the key is not returned.</li>
+    <li>A room safe is provided - the hotel will not accept any liability for valuables left in your room.</li>
+    <li>The hotel will not be responsible for any accidents or injuries to guests.</li>
+    <li>Cash payments or deposits can only be accepted in Malaysian Ringgit</li>
+    <li>There is a 600 Malaysian Ringgit penalty for any guest found bring durian, mangosteen, smoking or vaping in a non-smoking room.</li>
+    <li>My signature is sufficient authorization for the hotel to use my imprinted credit card for the payment of my account.</li>
+    <li>I agree to receive emails from Archipelago International regarding my stay experience and exclusive benefits.</li>
+    <li>The hotel reserves the right to assess fees for damages to the room in accordance with its policies.</li>
+  </ol>
 
-    <!-- GOV NOTICE -->
-    <div class="gov">
-      Our hotels support government programs to prevent illegal and immoral acts that violate Indonesia laws.<br>
-      Lawbreakers will be reported.
+  <!-- GOV NOTICE -->
+  <div class="gov">
+    Our hotels support government programs to prevent illegal and immoral acts that violate Indonesia laws.<br>
+    Lawbreakers will be reported.
+  </div>
+
+  <!-- SIGNATURE -->
+  <div class="sig-section">
+    <div class="sig-lbl">GUEST SIGNATURE</div>
+    <div class="sig-canvas-wrap" id="sigWrap">
+      <canvas class="sig-canvas" id="sigCanvas"></canvas>
+      <span class="sig-hint" id="sigHint">Sign here</span>
     </div>
-
-    <!-- SIGNATURE — canvas is HERE only -->
-    <div class="sig-section">
-      <div class="sig-lbl">GUEST SIGNATURE</div>
-      <div class="sig-canvas-wrap" id="sigWrap">
-        <canvas class="sig-canvas" id="sigCanvas"></canvas>
-        <span class="sig-hint" id="sigHint">Sign here</span>
-      </div>
-      <div class="sig-dots">.................................................</div>
-      <div class="sig-controls">
-        <button onclick="clearSig()">Clear</button>
-        <button onclick="undo()">Undo</button>
-        <button onclick="redo()">Redo</button>
-      </div>
+    <div class="sig-dots">.................................................</div>
+    <div class="sig-controls">
+      <button onclick="clearSig()">Clear</button>
+      <button onclick="undo()">Undo</button>
+      <button onclick="redo()">Redo</button>
     </div>
+  </div>
 
-    <!-- BOTTOM TABLE -->
-    <table class="btbl">
-      <tr>
-        <td>ROOM NUMBER: 925</td>
-        <td>BOOKING SOURCE: WALKIN</td>
-        <td>ROOM RATE: BARRBCAN01</td>
-      </tr>
-      <tr>
-        <td>ROOM TYPE: FAMILY SUITE</td>
-        <td>PURPOSE OF STAY:</td>
-        <td>DEPOSIT: 0</td>
-      </tr>
-      <tr>
-        <td>Checked in by: Andi Mario Sentinel</td>
-        <td>Escorted by:</td>
-        <td>AGENCY: WALKIN</td>
-      </tr>
-    </table>
+  <!-- BOTTOM TABLE -->
+  <table class="btbl">
+    <tr>
+      <td>ROOM NUMBER: 925</td>
+      <td>BOOKING SOURCE: WALKIN</td>
+      <td>ROOM RATE: BARRBCAN01</td>
+    </tr>
+    <tr>
+      <td>ROOM TYPE: FAMILY SUITE</td>
+      <td>PURPOSE OF STAY:</td>
+      <td>DEPOSIT: 0</td>
+    </tr>
+    <tr>
+      <td>Checked in by: Andi Mario Sentinel</td>
+      <td>Escorted by:</td>
+      <td>AGENCY: WALKIN</td>
+    </tr>
+  </table>
 
-    <!-- FOOTER -->
-    <div class="ftr">
-      Sentinel Tech Tower Jakarta 10050 Indonesia<br>
-      t: +62800000000 &nbsp;&nbsp;&nbsp;&nbsp; e: info+11@sentineltech.com
-    </div>
+  <!-- FOOTER -->
+  <div class="ftr">
+    Sentinel Tech Tower Jakarta 10050 Indonesia<br>
+    t: +62800000000 &nbsp;&nbsp;&nbsp;&nbsp; e: info+11@sentineltech.com
   </div>
 </div>
 
@@ -469,18 +401,14 @@
 
 <script>
 (function(){
-  let tool = 'pen';
-  let pColor = '#000000', pSize = 2;
-  let hColor = '#FBBC04', hSize = 12;
-  let strokes = [], redoStack = [];
-  let drawing = false, path = [];
+  let tool='pen', pColor='#000000', pSize=2, hColor='#FBBC04', hSize=12;
+  let strokes=[], redoStack=[], drawing=false, path=[];
 
-  const cvs = document.getElementById('sigCanvas');
-  const ctx = cvs.getContext('2d');
-  const sigWrap = document.getElementById('sigWrap');
-  const sigHint = document.getElementById('sigHint');
+  const cvs=document.getElementById('sigCanvas');
+  const ctx=cvs.getContext('2d');
+  const sigWrap=document.getElementById('sigWrap');
 
-  const COLORS = [
+  const COLORS=[
     '#000000','#9AA0A6','#6B7B8D','#B0BEC5','#CFD8DC','#FFFFFF',
     '#F28B82','#FBBC04','#34A853','#4285F4','#D7AEFB','#E6C9A8',
     '#EA4335','#F9AB00','#1E8E3E','#1967D2','#9334E6','#A8744A',
@@ -488,176 +416,137 @@
   ];
 
   function resize(){
-    const r = devicePixelRatio || 1;
-    const w = sigWrap.clientWidth, h = sigWrap.clientHeight;
-    cvs.width = w * r; cvs.height = h * r;
-    cvs.style.width = w + 'px'; cvs.style.height = h + 'px';
-    ctx.setTransform(r, 0, 0, r, 0, 0);
+    const r=devicePixelRatio||1;
+    const w=sigWrap.clientWidth, h=sigWrap.clientHeight;
+    cvs.width=w*r; cvs.height=h*r;
+    cvs.style.width=w+'px'; cvs.style.height=h+'px';
+    ctx.setTransform(r,0,0,r,0,0);
     paint();
   }
 
   function paint(){
-    ctx.clearRect(0, 0, cvs.width, cvs.height);
-    strokes.forEach(s => renderStroke(s));
-    updateHint();
+    ctx.clearRect(0,0,cvs.width,cvs.height);
+    strokes.forEach(s=>renderStroke(s));
+    sigWrap.classList.toggle('has-ink', strokes.length>0);
   }
 
   function renderStroke(s){
-    if (s.pts.length < 2) return;
+    if(s.pts.length<2) return;
     ctx.save();
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.globalAlpha = s.tool === 'highlighter' ? 0.35 : 1;
-    ctx.strokeStyle = s.color;
-    ctx.lineWidth = s.size;
-    ctx.beginPath();
-    ctx.moveTo(s.pts[0].x, s.pts[0].y);
-    for (let i = 1; i < s.pts.length; i++){
-      const p = s.pts[i-1], c = s.pts[i];
-      ctx.quadraticCurveTo(p.x, p.y, (p.x+c.x)/2, (p.y+c.y)/2);
+    ctx.lineCap='round'; ctx.lineJoin='round';
+    ctx.globalAlpha=s.tool==='highlighter'?0.35:1;
+    ctx.strokeStyle=s.color; ctx.lineWidth=s.size;
+    ctx.beginPath(); ctx.moveTo(s.pts[0].x,s.pts[0].y);
+    for(let i=1;i<s.pts.length;i++){
+      const p=s.pts[i-1],c=s.pts[i];
+      ctx.quadraticCurveTo(p.x,p.y,(p.x+c.x)/2,(p.y+c.y)/2);
     }
-    ctx.stroke();
-    ctx.restore();
+    ctx.stroke(); ctx.restore();
   }
 
-  function updateHint(){
-    if (strokes.length > 0) sigWrap.classList.add('has-ink');
-    else sigWrap.classList.remove('has-ink');
-  }
-
-  /* ── popups ── */
   function buildPop(type){
-    const isHL = type === 'highlighter';
-    const ac = isHL ? hColor : pColor;
-    const as = isHL ? hSize : pSize;
-    const szSet = isHL ? [6,10,14,20,28] : [1,2,3,5,8];
-    const dotSz = [4,6,8,11,15];
-    let h = '<div class="lbl">Size</div><div class="size-row">';
-    szSet.forEach((s,i) => {
-      h += `<button class="size-btn ${as===s?'active':''}" onclick="setSize('${type}',${s})"><div class="size-dot" style="width:${dotSz[i]}px;height:${dotSz[i]}px;"></div></button>`;
+    const isHL=type==='highlighter';
+    const ac=isHL?hColor:pColor, as=isHL?hSize:pSize;
+    const szSet=isHL?[6,10,14,20,28]:[1,2,3,5,8];
+    const dotSz=[4,6,8,11,15];
+    let h='<div class="lbl">Size</div><div class="size-row">';
+    szSet.forEach((s,i)=>{
+      h+=`<button class="size-btn ${as===s?'active':''}" onclick="setSize('${type}',${s})"><div class="size-dot" style="width:${dotSz[i]}px;height:${dotSz[i]}px;"></div></button>`;
     });
-    h += '</div><div class="lbl">Color</div><div class="color-grid">';
-    COLORS.forEach(c => {
-      const bdr = c === '#FFFFFF' ? 'outline:1px solid #5f6368;' : '';
-      h += `<button class="color-swatch ${ac===c?'active':''}" style="background:${c};${bdr}" onclick="setColor('${type}','${c}')"></button>`;
+    h+='</div><div class="lbl">Color</div><div class="color-grid">';
+    COLORS.forEach(c=>{
+      const bdr=c==='#FFFFFF'?'outline:1px solid #5f6368;':'';
+      h+=`<button class="color-swatch ${ac===c?'active':''}" style="background:${c};${bdr}" onclick="setColor('${type}','${c}')"></button>`;
     });
-    h += '</div>';
-    return h;
+    h+='</div>'; return h;
   }
 
   function refreshPops(){
-    document.getElementById('penPop').innerHTML = buildPop('pen');
-    document.getElementById('hlPop').innerHTML = buildPop('highlighter');
+    document.getElementById('penPop').innerHTML=buildPop('pen');
+    document.getElementById('hlPop').innerHTML=buildPop('highlighter');
   }
 
-  function closeAllPops(){
-    document.querySelectorAll('.pen-popup').forEach(p => p.classList.remove('show'));
-  }
+  function closeAllPops(){ document.querySelectorAll('.pen-popup').forEach(p=>p.classList.remove('show')); }
 
-  window.pickTool = function(t){
+  window.pickTool=function(t){
     closeAllPops();
-    const was = tool === t;
-    tool = t;
-    document.getElementById('penBtn').classList.toggle('active', t==='pen');
-    document.getElementById('hlBtn').classList.toggle('active', t==='highlighter');
-    document.getElementById('eraserBtn').classList.toggle('active', t==='eraser');
-    cvs.style.cursor = t === 'eraser' ? 'cell' : 'crosshair';
-    if ((t==='pen' || t==='highlighter') && was){
+    const was=tool===t; tool=t;
+    document.getElementById('penBtn').classList.toggle('active',t==='pen');
+    document.getElementById('hlBtn').classList.toggle('active',t==='highlighter');
+    document.getElementById('eraserBtn').classList.toggle('active',t==='eraser');
+    cvs.style.cursor=t==='eraser'?'cell':'crosshair';
+    if((t==='pen'||t==='highlighter')&&was){
       refreshPops();
       document.getElementById(t==='pen'?'penPop':'hlPop').classList.add('show');
     }
     showToast(t==='eraser'?'Eraser':t==='highlighter'?'Highlighter':'Pen');
   };
 
-  window.setColor = function(t,c){ if(t==='pen') pColor=c; else hColor=c; refreshPops(); };
-  window.setSize = function(t,s){ if(t==='pen') pSize=s; else hSize=s; refreshPops(); };
+  window.setColor=function(t,c){ if(t==='pen') pColor=c; else hColor=c; refreshPops(); };
+  window.setSize=function(t,s){ if(t==='pen') pSize=s; else hSize=s; refreshPops(); };
 
-  /* ── drawing (signature canvas only) ── */
   function pos(e){
-    const r = cvs.getBoundingClientRect();
-    const t = e.touches ? e.touches[0] : e;
-    return { x: t.clientX - r.left, y: t.clientY - r.top };
+    const r=cvs.getBoundingClientRect(), t=e.touches?e.touches[0]:e;
+    return {x:t.clientX-r.left, y:t.clientY-r.top};
   }
 
   function down(e){
-    closeAllPops();
-    e.preventDefault();
-    drawing = true;
+    closeAllPops(); e.preventDefault(); drawing=true;
     sigWrap.classList.add('drawing');
-    const p = pos(e);
-    if (tool === 'eraser'){ eraseAt(p); return; }
-    path = [p]; redoStack = [];
+    const p=pos(e);
+    if(tool==='eraser'){eraseAt(p);return;}
+    path=[p]; redoStack=[];
   }
 
   function move(e){
-    if (!drawing) return;
-    e.preventDefault();
-    const p = pos(e);
-    if (tool === 'eraser'){ eraseAt(p); return; }
-    path.push(p);
-    paint();
-    renderStroke({
-      pts: path,
-      color: tool==='highlighter' ? hColor : pColor,
-      size: tool==='highlighter' ? hSize : pSize,
-      tool: tool
-    });
+    if(!drawing) return; e.preventDefault();
+    const p=pos(e);
+    if(tool==='eraser'){eraseAt(p);return;}
+    path.push(p); paint();
+    renderStroke({pts:path,color:tool==='highlighter'?hColor:pColor,size:tool==='highlighter'?hSize:pSize,tool:tool});
   }
 
   function up(e){
-    if (!drawing) return;
-    drawing = false;
-    sigWrap.classList.remove('drawing');
-    e.preventDefault();
-    if (tool !== 'eraser' && path.length > 0){
-      strokes.push({
-        pts: [...path],
-        color: tool==='highlighter' ? hColor : pColor,
-        size: tool==='highlighter' ? hSize : pSize,
-        tool: tool
-      });
-      path = [];
-      paint();
+    if(!drawing) return; drawing=false;
+    sigWrap.classList.remove('drawing'); e.preventDefault();
+    if(tool!=='eraser'&&path.length>0){
+      strokes.push({pts:[...path],color:tool==='highlighter'?hColor:pColor,size:tool==='highlighter'?hSize:pSize,tool:tool});
+      path=[]; paint();
     }
   }
 
   function eraseAt(p){
-    const th = 12;
-    strokes = strokes.filter(s => !s.pts.some(pt => Math.abs(pt.x-p.x)<th && Math.abs(pt.y-p.y)<th));
+    const th=12;
+    strokes=strokes.filter(s=>!s.pts.some(pt=>Math.abs(pt.x-p.x)<th&&Math.abs(pt.y-p.y)<th));
     paint();
   }
 
-  cvs.addEventListener('mousedown', down);
-  cvs.addEventListener('mousemove', move);
-  cvs.addEventListener('mouseup', up);
-  cvs.addEventListener('mouseleave', up);
-  cvs.addEventListener('touchstart', down, {passive:false});
-  cvs.addEventListener('touchmove', move, {passive:false});
-  cvs.addEventListener('touchend', up, {passive:false});
+  cvs.addEventListener('mousedown',down);
+  cvs.addEventListener('mousemove',move);
+  cvs.addEventListener('mouseup',up);
+  cvs.addEventListener('mouseleave',up);
+  cvs.addEventListener('touchstart',down,{passive:false});
+  cvs.addEventListener('touchmove',move,{passive:false});
+  cvs.addEventListener('touchend',up,{passive:false});
 
-  /* ── undo / redo / clear ── */
-  window.undo = function(){ if(strokes.length){ redoStack.push(strokes.pop()); paint(); }};
-  window.redo = function(){ if(redoStack.length){ strokes.push(redoStack.pop()); paint(); }};
-  window.clearSig = function(){ strokes=[]; redoStack=[]; paint(); };
+  window.undo=function(){if(strokes.length){redoStack.push(strokes.pop());paint();}};
+  window.redo=function(){if(redoStack.length){strokes.push(redoStack.pop());paint();}};
+  window.clearSig=function(){strokes=[];redoStack=[];paint();};
 
-  /* ── toast ── */
   let tt;
   function showToast(msg){
-    const el = document.getElementById('toast');
-    el.textContent = msg;
-    el.classList.add('show');
-    clearTimeout(tt);
-    tt = setTimeout(() => el.classList.remove('show'), 1200);
+    const el=document.getElementById('toast');
+    el.textContent=msg; el.classList.add('show');
+    clearTimeout(tt); tt=setTimeout(()=>el.classList.remove('show'),1200);
   }
 
-  document.addEventListener('click', function(e){
-    if (!e.target.closest('.pen-popup') && !e.target.closest('.tool-btn')) closeAllPops();
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.pen-popup')&&!e.target.closest('.tool-btn')) closeAllPops();
   });
 
-  window.addEventListener('resize', resize);
-  refreshPops();
-  resize();
-  new ResizeObserver(() => resize()).observe(sigWrap);
+  window.addEventListener('resize',resize);
+  refreshPops(); resize();
+  new ResizeObserver(()=>resize()).observe(sigWrap);
 })();
 </script>
 </body>
