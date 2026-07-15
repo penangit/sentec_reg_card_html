@@ -206,6 +206,12 @@
     transition: background 0.15s;
   }
   .sig-controls button:hover { background: #eee; }
+  .sig-controls .apply-btn {
+    background: #1a73e8; color: #fff; border: none;
+    font-weight: 600; padding: 1.5mm 6mm; border-radius: 3px;
+  }
+  .sig-controls .apply-btn:hover { background: #1557b0; }
+  .sig-controls .apply-btn:disabled { background: #94c4f7; cursor: wait; }
 
   /* ═══ BOTTOM TABLE ═══ */
   .btbl {
@@ -366,8 +372,7 @@
     <div class="sig-dots">.................................................</div>
     <div class="sig-controls">
       <button onclick="clearSig()">Clear</button>
-      <button onclick="undo()">Undo</button>
-      <button onclick="redo()">Redo</button>
+      <button class="apply-btn" onclick="applyPDF()">Apply</button>
     </div>
   </div>
 
@@ -399,6 +404,8 @@
 
 <div class="toast" id="toast"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
 <script>
 (function(){
   let tool='pen', pColor='#000000', pSize=2, hColor='#FBBC04', hSize=12;
@@ -529,15 +536,67 @@
   cvs.addEventListener('touchmove',move,{passive:false});
   cvs.addEventListener('touchend',up,{passive:false});
 
-  window.undo=function(){if(strokes.length){redoStack.push(strokes.pop());paint();}};
-  window.redo=function(){if(redoStack.length){strokes.push(redoStack.pop());paint();}};
   window.clearSig=function(){strokes=[];redoStack=[];paint();};
+
+  /* ── APPLY: generate PDF blob and open in new tab ── */
+  window.applyPDF=async function(){
+    const btn=document.querySelector('.apply-btn');
+    btn.disabled=true; btn.textContent='Generating...';
+
+    try {
+      const page=document.querySelector('.a4-page');
+      /* Hide dashed border, hint, controls for capture */
+      sigWrap.style.border='none';
+      sigWrap.style.background='transparent';
+      const hint=document.getElementById('sigHint');
+      hint.style.display='none';
+      const controls=document.querySelector('.sig-controls');
+      controls.style.display='none';
+
+      /* Capture the A4 page at high DPI */
+      const canvas=await html2canvas(page,{
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff',
+        width: page.scrollWidth,
+        height: page.scrollHeight,
+        windowWidth: page.scrollWidth,
+        windowHeight: page.scrollHeight,
+      });
+
+      /* Restore UI */
+      sigWrap.style.border='';
+      sigWrap.style.background='';
+      hint.style.display='';
+      controls.style.display='';
+
+      /* Build A4 PDF (595.28 x 841.89 pt) */
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
+
+      const imgData = canvas.toDataURL('image/png');
+      /* A4 in mm: 210 x 297 */
+      pdf.addImage(imgData, 'PNG', 0, 0, 210, 297, undefined, 'FAST');
+
+      /* Open as blob URL in new tab */
+      const blob = pdf.output('blob');
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+
+      showToast('PDF generated');
+    } catch(err) {
+      console.error('PDF generation failed:', err);
+      showToast('Error generating PDF');
+    }
+
+    btn.disabled=false; btn.textContent='Apply';
+  };
 
   let tt;
   function showToast(msg){
     const el=document.getElementById('toast');
     el.textContent=msg; el.classList.add('show');
-    clearTimeout(tt); tt=setTimeout(()=>el.classList.remove('show'),1200);
+    clearTimeout(tt); tt=setTimeout(()=>el.classList.remove('show'),1500);
   }
 
   document.addEventListener('click',function(e){
