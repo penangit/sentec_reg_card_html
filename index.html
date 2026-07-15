@@ -545,39 +545,60 @@
 
     try {
       const page=document.querySelector('.a4-page');
-      /* Hide dashed border, hint, controls for capture */
-      sigWrap.style.border='none';
-      sigWrap.style.background='transparent';
       const hint=document.getElementById('sigHint');
-      hint.style.display='none';
       const controls=document.querySelector('.sig-controls');
-      controls.style.display='none';
+      const toolbar=document.querySelector('.pen-toolbar');
 
-      /* Capture the A4 page at high DPI */
-      const canvas=await html2canvas(page,{
+      /* Bake signature canvas into a flat <img> so html2canvas positions it correctly */
+      const sigDataURL = cvs.toDataURL('image/png');
+      const sigImg = document.createElement('img');
+      sigImg.src = sigDataURL;
+      sigImg.style.cssText = 'width:100%;height:100%;position:absolute;top:0;left:0;pointer-events:none;';
+      sigWrap.appendChild(sigImg);
+
+      /* Hide UI elements for clean capture */
+      cvs.style.display = 'none';
+      sigWrap.style.border = 'none';
+      sigWrap.style.background = 'transparent';
+      hint.style.display = 'none';
+      controls.style.display = 'none';
+      toolbar.style.display = 'none';
+
+      /* Capture the A4 page at high resolution */
+      const captured = await html2canvas(page, {
         scale: 2,
         useCORS: true,
         backgroundColor: '#ffffff',
-        width: page.scrollWidth,
-        height: page.scrollHeight,
-        windowWidth: page.scrollWidth,
-        windowHeight: page.scrollHeight,
+        logging: false,
       });
 
-      /* Restore UI */
-      sigWrap.style.border='';
-      sigWrap.style.background='';
-      hint.style.display='';
-      controls.style.display='';
+      /* Restore everything */
+      sigWrap.removeChild(sigImg);
+      cvs.style.display = '';
+      sigWrap.style.border = '';
+      sigWrap.style.background = '';
+      hint.style.display = '';
+      controls.style.display = '';
+      toolbar.style.display = '';
 
-      /* Build A4 PDF (595.28 x 841.89 pt) */
+      /* Build A4 PDF */
       const { jsPDF } = window.jspdf || window;
       if (!jsPDF) { showToast('PDF library failed to load'); btn.disabled=false; btn.textContent='Apply'; return; }
       const pdf = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
 
-      const imgData = canvas.toDataURL('image/png');
-      /* A4 in mm: 210 x 297 */
-      pdf.addImage(imgData, 'PNG', 0, 0, 210, 297, undefined, 'FAST');
+      /* Scale captured image to fit A4 exactly (210 x 297 mm) */
+      const pageW = 210, pageH = 297;
+      const imgRatio = captured.width / captured.height;
+      const a4Ratio = pageW / pageH;
+      let fitW = pageW, fitH = pageH;
+      if (imgRatio > a4Ratio) {
+        fitH = pageW / imgRatio;
+      } else {
+        fitW = pageH * imgRatio;
+      }
+
+      const imgData = captured.toDataURL('image/png');
+      pdf.addImage(imgData, 'PNG', 0, 0, fitW, fitH, undefined, 'FAST');
 
       /* Open as blob URL in new tab */
       const blob = pdf.output('blob');
